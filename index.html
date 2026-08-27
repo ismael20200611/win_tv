@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>7 City Boxes</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.app {
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.header {
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #222;
+    margin-bottom: 18px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 12px;
+}
+
+/* =========================
+   3 COLUMNS × 3 ROWS
+========================= */
+
+.grid {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    grid-template-rows:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    min-height: 0;
+}
+
+/* =========================
+   BOX
+========================= */
+
+.city-card {
+    background: #080808;
+
+    border: 3px solid var(--box-color);
+
+    border-radius: 8px;
+
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    transition: 0.2s;
+}
+
+.city-card:hover {
+    box-shadow:
+        0 0 15px var(--box-color);
+}
+
+/* =========================
+   HEADER INSIDE BOX
+========================= */
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 30px;
+
+    margin-bottom: 10px;
+}
+
+.number {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--box-color);
+
+    color: #000;
+
+    font-weight: bold;
+    font-size: 14px;
+
+    border-radius: 5px;
+}
+
+.live {
+    color: #666;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+select,
+input {
+    width: 100%;
+    height: 42px;
+
+    background: #151515;
+
+    color: white;
+
+    border: 1px solid #333;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    padding: 0 10px;
+
+    font-size: 14px;
+}
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #111;
+    color: white;
+}
+
+input::placeholder {
+    color: #666;
+}
+
+select:focus,
+input:focus {
+    border-color: var(--box-color);
+
+    box-shadow:
+        0 0 7px var(--box-color);
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 11px;
+
+    color: #555;
+}
+
+.status.ok {
+    color: #55ff55;
+}
+
+.status.error {
+    color: #ff3333;
+}
+
+/* =========================
+   COLORS
+========================= */
+
+.box-1 {
+    --box-color: #8cff00;
+}
+
+.box-2 {
+    --box-color: #ffe000;
+}
+
+.box-3 {
+    --box-color: #ff1717;
+}
+
+.box-4 {
+    --box-color: #6500ff;
+}
+
+.box-5 {
+    --box-color: #00afd0;
+}
+
+.box-6 {
+    --box-color: #b900ff;
+}
+
+.box-7 {
+    --box-color: #79513f;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    height: 35px;
+
+    margin-top: 12px;
+
+    display: flex;
+    align-items: center;
+
+    color: #555;
+
+    font-size: 11px;
+}
+
+/* =========================
+   FULLSCREEN
+========================= */
+
+.fullscreen-btn {
+    position: fixed;
+
+    right: 15px;
+    bottom: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #333;
+
+    border-radius: 7px;
+
+    background: #111;
+
+    color: #aaa;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 100;
+}
+
+.fullscreen-btn:hover {
+    color: white;
+    border-color: #777;
+}
+
+/* =========================
+   SMALL SCREEN
+========================= */
+
+@media (max-width: 700px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    .grid {
+        gap: 7px;
+    }
+
+    .city-card {
+        padding: 7px;
+        border-width: 2px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    select,
+    input {
+        height: 34px;
+        font-size: 11px;
+    }
+
+    .number {
+        width: 23px;
+        height: 23px;
+        font-size: 11px;
+    }
+
+    .live {
+        font-size: 8px;
+    }
+}
+
+/* =========================
+   PHONE
+========================= */
+
+@media (max-width: 450px) {
+
+    .header {
+        height: 40px;
+        margin-bottom: 7px;
+    }
+
+    .title {
+        font-size: 13px;
+    }
+
+    .subtitle {
+        display: none;
+    }
+
+    .grid {
+        gap: 5px;
+    }
+
+    .city-card {
+        padding: 5px;
+        border-width: 2px;
+        border-radius: 4px;
+    }
+
+    select,
+    input {
+        height: 28px;
+        font-size: 9px;
+        padding: 0 5px;
+    }
+
+    .card-header {
+        height: 23px;
+        margin-bottom: 5px;
+    }
+
+    .number {
+        width: 20px;
+        height: 20px;
+        font-size: 9px;
+    }
+
+    .status {
+        height: 17px;
+        font-size: 7px;
+    }
+
+    .footer {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        <div class="title">
+            CITY CONTROL
+        </div>
+
+        <div class="subtitle">
+            7 LIVE CITY BOXES
+        </div>
+    </div>
+
+
+    <!-- =================================
+         3 × 3 TABLE
+         ONLY 7 BOXES
+    ================================== -->
+
+    <div class="grid">
+
+        <!-- BOX 1 -->
+        <div class="city-card box-1">
+
+            <div class="card-header">
+                <div class="number">1</div>
+                <div class="live">LIVE 1</div>
+            </div>
+
+            <div class="controls">
+
+                <select class="city-select">
+                    <option value="">Select City</option>
+                </select>
+
+                <input
+                    type="text"
+                    class="city-input"
+                    placeholder="Write city..."
+                    autocomplete="off"
+                >
+
+                <div class="status"></div>
+
+            </div>
+        </div>
+
+
+        <!-- BOX 2 -->
+        <div class="city-card box-2">
+
+            <div class="card-header">
+                <div class="number">2</div>
+                <div class="live">LIVE 2</div>
+            </div>
+
+            <div class="controls">
+
+                <select class="city-select">
+                    <option value="">Select City</option>
+                </select>
+
+                <input
+                    type="text"
+                    class="city-input"
+                    placeholder="Write city..."
+                    autocomplete="off"
+                >
+
+                <div class="status"></div>
+
+            </div>
+        </div>
+
+
+        <!-- BOX 3 -->
+        <div class="city-card box-3">
+
+            <div class="card-header">
+                <div class="number">3</div>
+                <div class="live">LIVE 3</div>
+            </div>
+
+            <div class="controls">
+
+                <select class="city-select">
+                    <option value="">Select City</option>
+                </select>
+
+                <input
+                    type="text"
+                    class="city-input"
+                    placeholder="Write city..."
+                    autocomplete="off"
+                >
+
+                <div class="status"></div>
+
+            </div>
+        </div>
+
+
+        <!-- BOX 4 -->
+        <div class="city-card box-4">
+
+            <div class="card-header">
+                <div class="number">4</div>
+                <div class="live">LIVE 4</div>
+            </div>
+
+            <div class="controls">
+
+                <select class="city-select">
+                    <option value="">Select City</option>
+                </select>
+
+                <input
+                    type="text"
+                    class="city-input"
+                    placeholder="Write city..."
+                    autocomplete="off"
+                >
+
+                <div class="status"></div>
+
+            </div>
+        </div>
+
+
+        <!-- BOX 5 -->
+        <div class="city-card box-5">
+
+            <div class="card-header">
+                <div class="number">5</div>
+                <div class="live">LIVE 5</div>
+            </div>
+
+            <div class="controls">
+
+                <select class="city-select">
+                    <option value="">Select City</option>
+                </select>
+
+                <input
+                    type="text"
+                    class="city-input"
+                    placeholder="Write city..."
+                    autocomplete="off"
+                >
+
+                <div class="status"></div>
+
+            </div>
+        </div>
+
+
+        <!-- BOX 6 -->
+        <div class="city-card box-6">
+
+            <div class="card-header">
+                <div class="number">6</div>
+                <div class="live">LIVE 6</div>
+            </div>
+
+            <div class="controls">
+
+                <select class="city-select">
+                    <option value="">Select City</option>
+                </select>
+
+                <input
+                    type="text"
+                    class="city-input"
+                    placeholder="Write city..."
+                    autocomplete="off"
+                >
+
+                <div class="status"></div>
+
+            </div>
+        </div>
+
+
+        <!-- BOX 7 -->
+        <div class="city-card box-7">
+
+            <div class="card-header">
+                <div class="number">7</div>
+                <div class="live">LIVE 7</div>
+            </div>
+
+            <div class="controls">
+
+                <select class="city-select">
+                    <option value="">Select City</option>
+                </select>
+
+                <input
+                    type="text"
+                    class="city-input"
+                    placeholder="Write city..."
+                    autocomplete="off"
+                >
+
+                <div class="status"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        Available cities:
+        Erbil • Sulaymany • Habja • Duhok • Ranya • Dukan
+    </div>
+
+</div>
+
+
+<!-- FULLSCREEN -->
+
+<button
+    class="fullscreen-btn"
+    id="fullscreenBtn">
+    ⛶
+</button>
+
+
+<script>
+
+/* ==========================================
+   ONLY AVAILABLE CITIES
+========================================== */
+
+const cities = [
+    "Erbil",
+    "Sulaymany",
+    "Habja",
+    "Duhok",
+    "Ranya",
+    "Dukan"
+];
+
+
+/* ==========================================
+   CREATE OPTIONS
+========================================== */
+
+document.querySelectorAll(".city-select")
+.forEach(select => {
+
+    cities.forEach(city => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = city;
+
+        option.textContent = city;
+
+        select.appendChild(option);
+
+    });
+
+});
+
+
+/* ==========================================
+   CITY BOX FUNCTION
+========================================== */
+
+document.querySelectorAll(".city-card")
+.forEach(card => {
+
+    const select =
+        card.querySelector(".city-select");
+
+    const input =
+        card.querySelector(".city-input");
+
+    const status =
+        card.querySelector(".status");
+
+
+    /* ===============================
+       SELECT FROM LIST
+    =============================== */
+
+    select.addEventListener("change", () => {
+
+        const city = select.value;
+
+        if (city === "") {
+
+            input.value = "";
+
+            status.textContent = "";
+
+            status.className = "status";
+
+            return;
+        }
+
+
+        input.value = city;
+
+        status.textContent =
+            "✓ Data available: " + city;
+
+        status.className =
+            "status ok";
+
+    });
+
+
+    /* ===============================
+       TYPE CITY
+    =============================== */
+
+    input.addEventListener("input", () => {
+
+        const value =
+            input.value.trim();
+
+
+        if (value === "") {
+
+            select.value = "";
+
+            status.textContent = "";
+
+            status.className = "status";
+
+            return;
+        }
+
+
+        /* Check fixed city list */
+
+        const found =
+            cities.find(city =>
+                city.toLowerCase() ===
+                value.toLowerCase()
+            );
+
+
+        if (found) {
+
+            /*
+             * City exists
+             */
+
+            select.value = found;
+
+            input.value = found;
+
+            status.textContent =
+                "✓ Data available: " + found;
+
+            status.className =
+                "status ok";
+
+        } else {
+
+            /*
+             * City does NOT exist.
+             *
+             * No new city is created.
+             */
+
+            select.value = "";
+
+            status.textContent =
+                "✕ No data available";
+
+            status.className =
+                "status error";
+
+        }
+
+    });
+
+});
+
+
+/* ==========================================
+   FULLSCREEN
+========================================== */
+
+const fullscreenBtn =
+    document.getElementById("fullscreenBtn");
+
+
+fullscreenBtn.addEventListener("click", async () => {
+
+    try {
+
+        if (!document.fullscreenElement) {
+
+            await document.documentElement
+                .requestFullscreen();
+
+            fullscreenBtn.textContent = "✕";
+
+        } else {
+
+            await document.exitFullscreen();
+
+            fullscreenBtn.textContent = "⛶";
+
+        }
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+});
+
+
+document.addEventListener(
+    "fullscreenchange",
+    () => {
+
+        fullscreenBtn.textContent =
+            document.fullscreenElement
+                ? "✕"
+                : "⛶";
+
+    }
+);
+
+</script>
+
+</body>
+</html>
