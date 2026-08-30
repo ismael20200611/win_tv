@@ -25,1647 +25,648 @@
 
 html,
 body {
-
     margin: 0;
-
     width: 100%;
     height: 100%;
-
     background: #000;
-
     color: white;
-
-    font-family:
-        Arial,
-        "Noto Sans Arabic",
-        sans-serif;
-
-    overflow: hidden;
+    font-family: Arial, "Noto Sans Arabic", sans-serif;
 }
-
 
 body {
-
     display: flex;
-
     justify-content: center;
-
-    align-items: center;
+    align-items: flex-start;
+    overflow-y: auto;
 }
-
 
 /* =========================================
    MAIN APP
 ========================================= */
 
 .app {
-
     width: 100%;
-    height: 100%;
-
+    max-width: 1100px;
     padding: 18px;
-
     display: flex;
-
     flex-direction: column;
 }
-
 
 /* =========================================
    TOP HEADER
 ========================================= */
 
 .header {
-
     height: 58px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     border-bottom: 1px solid #252525;
-
     margin-bottom: 12px;
 }
 
-
 .title {
-
     font-size: 22px;
-
     font-weight: bold;
-
     letter-spacing: 2px;
 }
 
-
 .subtitle {
-
     color: #666;
-
     font-size: 11px;
 }
 
 .output-btn {
-
     background: #111;
-
     color: white;
-
     border: 1px solid #555;
-
     padding: 6px 16px;
-
     border-radius: 5px;
-
     cursor: pointer;
-
     font-weight: bold;
-
     transition: 0.2s;
 }
 
 .output-btn:hover {
-
     border-color: #00d9ff;
-
     color: #00d9ff;
-
     box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 }
-
 
 /* =========================================
    SPECIAL LANGUAGE CONTROL
 ========================================= */
 
 .language-panel {
-
     width: 100%;
-
     min-height: 70px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #151515,
-            #080808
-        );
-
+    background: linear-gradient(145deg, #151515, #080808);
     border: 2px solid #555;
-
     border-radius: 8px;
-
     padding: 10px 14px;
-
     margin-bottom: 14px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 15px;
 }
 
-
 .language-label {
-
     font-size: 14px;
-
     font-weight: bold;
-
     color: #aaa;
-
     white-space: nowrap;
 }
 
-
 #languageSelect {
-
     width: 280px;
-
     height: 43px;
-
     background: #111;
-
     color: white;
-
     border: 2px solid #777;
-
     border-radius: 6px;
-
     padding: 0 12px;
-
     font-size: 14px;
-
     outline: none;
-
     cursor: pointer;
 }
 
-
 #languageSelect:focus {
-
     border-color: #00d9ff;
-
-    box-shadow:
-        0 0 10px rgba(
-            0,
-            217,
-            255,
-            0.3
-        );
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 }
 
-
 #languageSelect option {
-
     background: #111;
-
     color: white;
 }
 
-
 /* =========================================
    GRID
-   3 COLUMNS × 3 ROWS
-   ONLY 7 BOXES
 ========================================= */
 
 .grid {
-
-    flex: 1;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    grid-template-rows:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-
-    min-height: 0;
+    margin-bottom: 30px;
 }
-
 
 /* =========================================
    CITY BOX
 ========================================= */
 
 .city-card {
-
-    background:
-        linear-gradient(
-            145deg,
-            #121212,
-            #070707
-        );
-
+    background: linear-gradient(145deg, #121212, #070707);
     border: 3px solid var(--box-color);
-
     border-radius: 8px;
-
     padding: 10px;
-
     display: flex;
-
     flex-direction: column;
-
     min-width: 0;
-
     transition: 0.2s;
 }
 
-
 .city-card:hover {
-
-    box-shadow:
-        0 0 14px var(--box-color);
-
-    transform:
-        translateY(-2px);
+    box-shadow: 0 0 14px var(--box-color);
+    transform: translateY(-2px);
 }
 
-
-/* =========================================
-   BOX HEADER
-========================================= */
-
 .card-header {
-
     height: 30px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     margin-bottom: 8px;
 }
 
-
 .number {
-
     width: 27px;
-
     height: 27px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    background:
-        var(--box-color);
-
+    background: var(--box-color);
     color: #000;
-
     border-radius: 5px;
-
     font-weight: bold;
-
     font-size: 13px;
 }
 
-
 .live {
-
     color: #666;
-
     font-size: 10px;
-
     letter-spacing: 1px;
 }
 
-
-/* =========================================
-   CONTROLS
-========================================= */
-
 .controls {
-
     flex: 1;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
 }
 
-
 .city-select,
 .city-input {
-
     width: 100%;
-
     height: 40px;
-
     background: #151515;
-
     color: white;
-
     border: 1px solid #333;
-
     border-radius: 5px;
-
     outline: none;
-
     padding: 0 9px;
-
     font-size: 13px;
 }
 
-
 .city-select {
-
     cursor: pointer;
 }
 
-
 .city-select option {
-
     background: #111;
-
     color: white;
 }
 
-
 .city-input::placeholder {
-
     color: #666;
 }
 
-
 .city-select:focus,
 .city-input:focus {
-
-    border-color:
-        var(--box-color);
-
-    box-shadow:
-        0 0 7px var(--box-color);
+    border-color: var(--box-color);
+    box-shadow: 0 0 7px var(--box-color);
 }
 
-
-/* =========================================
-   STATUS
-========================================= */
-
 .status {
-
     height: 25px;
-
     display: flex;
-
     align-items: center;
-
     font-size: 11px;
-
     color: #555;
-
     white-space: nowrap;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
 }
 
+.status.ok { color: #55ff55; }
+.status.error { color: #ff4444; }
 
-.status.ok {
-
-    color: #55ff55;
-}
-
-
-.status.error {
-
-    color: #ff4444;
-}
-
-
-/* =========================================
-   COLORS
-========================================= */
-
-.box-1 {
-    --box-color: #8cff00;
-}
-
-.box-2 {
-    --box-color: #ffe000;
-}
-
-.box-3 {
-    --box-color: #ff1717;
-}
-
-.box-4 {
-    --box-color: #6500ff;
-}
-
-.box-5 {
-    --box-color: #00afd0;
-}
-
-.box-6 {
-    --box-color: #b900ff;
-}
-
-.box-7 {
-    --box-color: #79513f;
-}
-
+/* COLORS */
+.box-1 { --box-color: #8cff00; }
+.box-2 { --box-color: #ffe000; }
+.box-3 { --box-color: #ff1717; }
+.box-4 { --box-color: #6500ff; }
+.box-5 { --box-color: #00afd0; }
+.box-6 { --box-color: #b900ff; }
+.box-7 { --box-color: #79513f; }
 
 /* =========================================
-   FOOTER
+   INLINE OUTPUT SECTION (BELOW GRID)
 ========================================= */
 
-.footer {
+.output-wrapper {
+    display: none;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    border-radius: 8px;
+    padding: 40px 20px 50px 20px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
 
-    height: 25px;
-
-    margin-top: 8px;
-
+.output-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 450px;
+    border: 4px solid black;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 30px 0;
+}
 
+.out-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: black;
+}
+.line-1 { left: 23%; }
+.line-2 { left: 46%; }
+.line-3 { left: 71%; }
+
+.out-bar {
+    position: relative;
+    background: #1427ea;
+    height: 50px;
+    display: flex;
     align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 2;
+}
+.out-bar-top { width: 71%; }
+.out-bar-bottom { width: 100%; }
 
+.out-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 4px;
+}
+
+.pos-1 { left: 0%; width: 32.4%; }
+.pos-2 { left: 32.4%; width: 32.4%; }
+.pos-3 { left: 64.8%; width: 35.2%; }
+
+.pos-4 { left: 0%; width: 23%; }
+.pos-5 { left: 23%; width: 23%; }
+.pos-6 { left: 46%; width: 25%; }
+.pos-7 { left: 71%; width: 29%; }
+
+.out-label {
+    position: absolute;
+    bottom: -35px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+}
+
+/* FOOTER & FULLSCREEN */
+.footer {
+    height: 25px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
     color: #555;
-
     font-size: 10px;
 }
 
-
-/* =========================================
-   FULLSCREEN
-========================================= */
-
 .fullscreen-btn {
-
     position: fixed;
-
     right: 15px;
-
     bottom: 15px;
-
     width: 42px;
-
     height: 42px;
-
     border: 1px solid #333;
-
     border-radius: 7px;
-
     background: #111;
-
     color: #aaa;
-
     font-size: 20px;
-
     cursor: pointer;
-
     z-index: 100;
-}
-
-
-.fullscreen-btn:hover {
-
-    color: white;
-
-    border-color: #777;
-}
-
-
-/* =========================================
-   SMALL SCREEN
-========================================= */
-
-@media (max-width: 700px) {
-
-    .app {
-
-        padding: 8px;
-    }
-
-
-    .header {
-
-        height: 40px;
-
-        margin-bottom: 7px;
-    }
-
-
-    .title {
-
-        font-size: 15px;
-    }
-
-
-    .subtitle {
-
-        display: none;
-    }
-
-
-    .language-panel {
-
-        min-height: 52px;
-
-        padding: 6px;
-
-        margin-bottom: 7px;
-
-        gap: 8px;
-    }
-
-
-    .language-label {
-
-        font-size: 10px;
-    }
-
-
-    #languageSelect {
-
-        width: 210px;
-
-        height: 34px;
-
-        font-size: 11px;
-    }
-
-
-    .grid {
-
-        gap: 6px;
-    }
-
-
-    .city-card {
-
-        padding: 6px;
-
-        border-width: 2px;
-    }
-
-
-    .card-header {
-
-        height: 23px;
-
-        margin-bottom: 5px;
-    }
-
-
-    .number {
-
-        width: 22px;
-
-        height: 22px;
-
-        font-size: 10px;
-    }
-
-
-    .live {
-
-        font-size: 7px;
-    }
-
-
-    .city-select,
-    .city-input {
-
-        height: 32px;
-
-        font-size: 10px;
-
-        padding: 0 5px;
-    }
-
-
-    .status {
-
-        height: 17px;
-
-        font-size: 7px;
-    }
-
-
-    .footer {
-
-        display: none;
-    }
-}
-
-
-@media (max-width: 450px) {
-
-    .language-panel {
-
-        justify-content: space-between;
-    }
-
-
-    .language-label {
-
-        font-size: 8px;
-    }
-
-
-    #languageSelect {
-
-        width: 170px;
-
-        height: 30px;
-
-        font-size: 9px;
-    }
-
-
-    .grid {
-
-        gap: 4px;
-    }
-
-
-    .city-card {
-
-        padding: 4px;
-    }
-
-
-    .city-select,
-    .city-input {
-
-        height: 27px;
-
-        font-size: 8px;
-    }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="app">
 
-
-    <!-- =====================================
-         HEADER
-    ====================================== -->
-
     <div class="header">
-
-        <div class="title">
-            CITY CONTROL
-        </div>
-
-        <div class="subtitle">
-            7 LIVE BOXES
-        </div>
-
-        <button class="output-btn" id="outputBtn">
-            OUTPUT
-        </button>
-
+        <div class="title">CITY CONTROL</div>
+        <div class="subtitle">7 LIVE BOXES</div>
+        <button class="output-btn" id="outputBtn">OUTPUT</button>
     </div>
-
-
-    <!-- =====================================
-         ONE LANGUAGE SELECTOR
-         DEFAULT = SORANI
-    ====================================== -->
 
     <div class="language-panel">
-
-        <div class="language-label">
-            LANGUAGE
-        </div>
-
-
-<select id="languageSelect">
-
-    <option value="sorani" selected>
-        کوردیی سۆرانی
-    </option>
-
-    <option value="kurmanji">
-        Kurdî Kurmancî
-    </option>
-
-</select>
-
+        <div class="language-label">LANGUAGE</div>
+        <select id="languageSelect">
+            <option value="sorani" selected>کوردیی سۆرانی</option>
+            <option value="kurmanji">Kurdî Kurmancî</option>
+        </select>
     </div>
-
-
-    <!-- =====================================
-         3 × 3 TABLE
-         ONLY 7 BOXES
-    ====================================== -->
 
     <div class="grid">
-
-
-        <!-- BOX 1 -->
-
         <div class="city-card box-1">
-
             <div class="card-header">
-
-                <div class="number">
-                    1
-                </div>
-
-                <div class="live">
-                    LIVE 1
-                </div>
-
+                <div class="number">1</div>
+                <div class="live">LIVE 1</div>
             </div>
-
-
             <div class="controls">
-
-                <select class="city-select">
-
-                    <option value="">
-                        Select City
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    class="city-input"
-                    placeholder="Write city..."
-                    autocomplete="off"
-                >
-
-
+                <select class="city-select"><option value="">Select City</option></select>
+                <input type="text" class="city-input" placeholder="Write city..." autocomplete="off">
                 <div class="status"></div>
-
             </div>
-
         </div>
-
-
-        <!-- BOX 2 -->
 
         <div class="city-card box-2">
-
             <div class="card-header">
-
-                <div class="number">
-                    2
-                </div>
-
-                <div class="live">
-                    LIVE 2
-                </div>
-
+                <div class="number">2</div>
+                <div class="live">LIVE 2</div>
             </div>
-
-
             <div class="controls">
-
-                <select class="city-select">
-
-                    <option value="">
-                        Select City
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    class="city-input"
-                    placeholder="Write city..."
-                    autocomplete="off"
-                >
-
-
+                <select class="city-select"><option value="">Select City</option></select>
+                <input type="text" class="city-input" placeholder="Write city..." autocomplete="off">
                 <div class="status"></div>
-
             </div>
-
         </div>
-
-
-        <!-- BOX 3 -->
 
         <div class="city-card box-3">
-
             <div class="card-header">
-
-                <div class="number">
-                    3
-                </div>
-
-                <div class="live">
-                    LIVE 3
-                </div>
-
+                <div class="number">3</div>
+                <div class="live">LIVE 3</div>
             </div>
-
-
             <div class="controls">
-
-                <select class="city-select">
-
-                    <option value="">
-                        Select City
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    class="city-input"
-                    placeholder="Write city..."
-                    autocomplete="off"
-                >
-
-
+                <select class="city-select"><option value="">Select City</option></select>
+                <input type="text" class="city-input" placeholder="Write city..." autocomplete="off">
                 <div class="status"></div>
-
             </div>
-
         </div>
-
-
-        <!-- BOX 4 -->
 
         <div class="city-card box-4">
-
             <div class="card-header">
-
-                <div class="number">
-                    4
-                </div>
-
-                <div class="live">
-                    LIVE 4
-                </div>
-
+                <div class="number">4</div>
+                <div class="live">LIVE 4</div>
             </div>
-
-
             <div class="controls">
-
-                <select class="city-select">
-
-                    <option value="">
-                        Select City
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    class="city-input"
-                    placeholder="Write city..."
-                    autocomplete="off"
-                >
-
-
+                <select class="city-select"><option value="">Select City</option></select>
+                <input type="text" class="city-input" placeholder="Write city..." autocomplete="off">
                 <div class="status"></div>
-
             </div>
-
         </div>
-
-
-        <!-- BOX 5 -->
 
         <div class="city-card box-5">
-
             <div class="card-header">
-
-                <div class="number">
-                    5
-                </div>
-
-                <div class="live">
-                    LIVE 5
-                </div>
-
+                <div class="number">5</div>
+                <div class="live">LIVE 5</div>
             </div>
-
-
             <div class="controls">
-
-                <select class="city-select">
-
-                    <option value="">
-                        Select City
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    class="city-input"
-                    placeholder="Write city..."
-                    autocomplete="off"
-                >
-
-
+                <select class="city-select"><option value="">Select City</option></select>
+                <input type="text" class="city-input" placeholder="Write city..." autocomplete="off">
                 <div class="status"></div>
-
             </div>
-
         </div>
-
-
-        <!-- BOX 6 -->
 
         <div class="city-card box-6">
-
             <div class="card-header">
-
-                <div class="number">
-                    6
-                </div>
-
-                <div class="live">
-                    LIVE 6
-                </div>
-
+                <div class="number">6</div>
+                <div class="live">LIVE 6</div>
             </div>
-
-
             <div class="controls">
-
-                <select class="city-select">
-
-                    <option value="">
-                        Select City
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    class="city-input"
-                    placeholder="Write city..."
-                    autocomplete="off"
-                >
-
-
+                <select class="city-select"><option value="">Select City</option></select>
+                <input type="text" class="city-input" placeholder="Write city..." autocomplete="off">
                 <div class="status"></div>
-
             </div>
-
         </div>
-
-
-        <!-- BOX 7 -->
 
         <div class="city-card box-7">
-
             <div class="card-header">
-
-                <div class="number">
-                    7
-                </div>
-
-                <div class="live">
-                    LIVE 7
-                </div>
-
+                <div class="number">7</div>
+                <div class="live">LIVE 7</div>
             </div>
-
-
             <div class="controls">
-
-                <select class="city-select">
-
-                    <option value="">
-                        Select City
-                    </option>
-
-                </select>
-
-
-                <input
-                    type="text"
-                    class="city-input"
-                    placeholder="Write city..."
-                    autocomplete="off"
-                >
-
-
+                <select class="city-select"><option value="">Select City</option></select>
+                <input type="text" class="city-input" placeholder="Write city..." autocomplete="off">
                 <div class="status"></div>
+            </div>
+        </div>
+    </div>
 
+    <div class="output-wrapper" id="outputWrapper">
+        <div class="output-container">
+            <div class="out-line line-1"></div>
+            <div class="out-line line-2"></div>
+            <div class="out-line line-3"></div>
+
+            <div class="out-bar out-bar-top">
+                <div class="out-item pos-1" id="out1">1</div>
+                <div class="out-item pos-2" id="out2">2</div>
+                <div class="out-item pos-3" id="out3">3</div>
             </div>
 
+            <div class="out-bar out-bar-bottom">
+                <div class="out-item pos-4" id="out4">4</div>
+                <div class="out-item pos-5" id="out5">5</div>
+                <div class="out-item pos-6" id="out6">6</div>
+                <div class="out-item pos-7" id="out7">7</div>
+            </div>
+
+            <div class="out-label">output</div>
         </div>
-
-
     </div>
 
-
-    <div class="footer">
-
-        Kurdî Kurmancî • کوردیی سۆرانی
-
-    </div>
-
+    <div class="footer">Kurdî Kurmancî • کوردیی سۆرانی</div>
 
 </div>
 
-
-<!-- =====================================
-     FULLSCREEN
-====================================== -->
-
-<button
-    class="fullscreen-btn"
-    id="fullscreenBtn">
-
-    ⛶
-
-</button>
-
+<button class="fullscreen-btn" id="fullscreenBtn">⛶</button>
 
 <script>
 
-/* ==================================================
-   CITY DATABASE
-================================================== */
-
 const cityData = {
-
-    /* ==============================
-       SORANI
-    ============================== */
-
     sorani: [
-
-        {
-            value: "ranya",
-            name: "ڕانیە"
-        },
-
-        {
-            value: "rûdaw",
-            name: "رووداو"
-        },
-
-        {
-            value: "erbil",
-            name: "هەولێر"
-        },
-
-        {
-            value: "sulaymany",
-            name: "سلێمانی"
-        },
-
-        {
-            value: "halabja",
-            name: "هەڵەبجە"
-        },
-
-        {
-            value: "duhok",
-            name: "دهۆک"
-        }
-
+        { value: "ranya", name: "ڕانیە" },
+        { value: "rûdaw", name: "رووداو" },
+        { value: "erbil", name: "هەولێر" },
+        { value: "sulaymany", name: "سلێمانی" },
+        { value: "halabja", name: "هەڵەبجە" },
+        { value: "duhok", name: "دهۆک" }
     ],
-
-
-    /* ==============================
-       KURMANJI
-    ============================== */
-
     kurmanji: [
-
-        {
-            value: "ranya",
-            name: "RANYA"
-        },
-
-        {
-            value: "rûdaw",
-            name: "RÛDAW"
-        },
-
-        {
-            value: "erbil",
-            name: "HEWLÊR"
-        },
-
-        {
-            value: "sulaymany",
-            name: "SILÊMANÎ"
-        },
-
-        {
-            value: "halabja",
-            name: "HELEBÇE"
-        },
-
-        {
-            value: "duhok",
-            name: "DUHOK"
-        }
-
+        { value: "ranya", name: "RANYA" },
+        { value: "rûdaw", name: "RÛDAW" },
+        { value: "erbil", name: "HEWLÊR" },
+        { value: "sulaymany", name: "SILÊMANÎ" },
+        { value: "halabja", name: "HELEBÇE" },
+        { value: "duhok", name: "DUHOK" }
     ]
-
 };
 
-
-/* ==================================================
-   GLOBAL LANGUAGE SELECTOR
-================================================== */
-
-const languageSelect =
-    document.getElementById(
-        "languageSelect"
-    );
-
-
-/* ==================================================
-   ALL CITY BOXES
-================================================== */
-
-const cards =
-    document.querySelectorAll(
-        ".city-card"
-    );
-
-
-/* ==================================================
-   LOAD CITIES
-================================================== */
+const languageSelect = document.getElementById("languageSelect");
+const cards = document.querySelectorAll(".city-card");
 
 function loadCities(language) {
-
     cards.forEach(card => {
-
-        const citySelect =
-            card.querySelector(
-                ".city-select"
-            );
-
-        const cityInput =
-            card.querySelector(
-                ".city-input"
-            );
-
-        const status =
-            card.querySelector(
-                ".status"
-            );
-
-
-        /* Clear old data */
+        const citySelect = card.querySelector(".city-select");
+        const cityInput = card.querySelector(".city-input");
+        const status = card.querySelector(".status");
 
         cityInput.value = "";
-
         status.textContent = "";
-
-        status.className =
-            "status";
-
-
-        /* Reset list */
-
+        status.className = "status";
         citySelect.innerHTML = "";
 
-
-        /* Default option */
-
-        const defaultOption =
-            document.createElement(
-                "option"
-            );
-
+        const defaultOption = document.createElement("option");
         defaultOption.value = "";
+        defaultOption.textContent = "Select City";
+        citySelect.appendChild(defaultOption);
 
-        defaultOption.textContent =
-            "Select City";
+        if (!language) return;
 
-        citySelect.appendChild(
-            defaultOption
-        );
+        cityData[language].forEach(city => {
+            const option = document.createElement("option");
+            option.value = city.value;
+            option.textContent = city.name;
+            citySelect.appendChild(option);
+        });
+    });
+}
 
+languageSelect.addEventListener("change", function() {
+    loadCities(this.value);
+});
 
-        /* Add cities */
+cards.forEach(card => {
+    const citySelect = card.querySelector(".city-select");
+    const cityInput = card.querySelector(".city-input");
+    const status = card.querySelector(".status");
 
-        if (!language) {
+    citySelect.addEventListener("change", function() {
+        const language = languageSelect.value;
+        const value = this.value;
+
+        if (!language || !value) {
+            cityInput.value = "";
+            status.textContent = "";
+            status.className = "status";
             return;
         }
 
-
-        cityData[language].forEach(
-            city => {
-
-                const option =
-                    document.createElement(
-                        "option"
-                    );
-
-                option.value =
-                    city.value;
-
-                option.textContent =
-                    city.name;
-
-                citySelect.appendChild(
-                    option
-                );
-
-            }
-        );
-
+        const city = cityData[language].find(item => item.value === value);
+        if (city) {
+            cityInput.value = city.name;
+            status.textContent = "✓ Data available";
+            status.className = "status ok";
+        }
     });
 
-}
+    cityInput.addEventListener("input", function() {
+        const language = languageSelect.value;
+        const typed = this.value.trim();
 
-
-/* ==================================================
-   CHANGE LANGUAGE
-   CHANGES ALL 7 BOXES
-================================================== */
-
-languageSelect.addEventListener(
-    "change",
-    function() {
-
-        loadCities(
-            this.value
-        );
-
-    }
-);
-
-
-/* ==================================================
-   CITY SELECT
-================================================== */
-
-cards.forEach(card => {
-
-    const citySelect =
-        card.querySelector(
-            ".city-select"
-        );
-
-    const cityInput =
-        card.querySelector(
-            ".city-input"
-        );
-
-    const status =
-        card.querySelector(
-            ".status"
-        );
-
-
-    citySelect.addEventListener(
-        "change",
-        function() {
-
-            const language =
-                languageSelect.value;
-
-            const value =
-                this.value;
-
-
-            if (!language || !value) {
-
-                cityInput.value = "";
-
-                status.textContent = "";
-
-                status.className =
-                    "status";
-
-                return;
-            }
-
-
-            const city =
-                cityData[language].find(
-                    item =>
-                    item.value === value
-                );
-
-
-            if (city) {
-
-                cityInput.value =
-                    city.name;
-
-                status.textContent =
-                    "✓ Data available";
-
-                status.className =
-                    "status ok";
-
-            }
-
+        if (!language) {
+            status.textContent = "Select language first";
+            status.className = "status error";
+            return;
         }
-    );
 
-
-    /* ==================================================
-       MANUAL INPUT
-    ================================================== */
-
-    cityInput.addEventListener(
-        "input",
-        function() {
-
-            const language =
-                languageSelect.value;
-
-
-            const typed =
-                this.value.trim();
-
-
-            if (!language) {
-
-                status.textContent =
-                    "Select language first";
-
-                status.className =
-                    "status error";
-
-                return;
-            }
-
-
-            if (typed === "") {
-
-                citySelect.value = "";
-
-                status.textContent = "";
-
-                status.className =
-                    "status";
-
-                return;
-            }
-
-
-            /* Find city in selected language */
-
-            const city =
-                cityData[language].find(
-                    item =>
-                    item.name.toLowerCase() ===
-                    typed.toLowerCase()
-                );
-
-
-            if (city) {
-
-                citySelect.value =
-                    city.value;
-
-                cityInput.value =
-                    city.name;
-
-                status.textContent =
-                    "✓ Data available";
-
-                status.className =
-                    "status ok";
-
-            } else {
-
-                citySelect.value = "";
-
-                status.textContent =
-                    "✕ No data available";
-
-                status.className =
-                    "status error";
-
-            }
-
+        if (typed === "") {
+            citySelect.value = "";
+            status.textContent = "";
+            status.className = "status";
+            return;
         }
-    );
 
+        const city = cityData[language].find(item => item.name.toLowerCase() === typed.toLowerCase());
+        if (city) {
+            citySelect.value = city.value;
+            cityInput.value = city.name;
+            status.textContent = "✓ Data available";
+            status.className = "status ok";
+        } else {
+            citySelect.value = "";
+            status.textContent = "✕ No data available";
+            status.className = "status error";
+        }
+    });
 });
-
-
-/* ==================================================
-   LOAD SORANI AUTOMATICALLY WHEN PAGE OPENS
-================================================== */
 
 loadCities("sorani");
 
-
 /* ==================================================
-   FULLSCREEN
-================================================== */
-
-const fullscreenBtn =
-    document.getElementById(
-        "fullscreenBtn"
-    );
-
-
-fullscreenBtn.addEventListener(
-    "click",
-    async () => {
-
-        try {
-
-            if (!document.fullscreenElement) {
-
-                await document.documentElement
-                    .requestFullscreen();
-
-                fullscreenBtn.textContent =
-                    "✕";
-
-            } else {
-
-                await document.exitFullscreen();
-
-                fullscreenBtn.textContent =
-                    "⛶";
-
-            }
-
-        } catch (error) {
-
-            console.log(error);
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "fullscreenchange",
-    () => {
-
-        fullscreenBtn.textContent =
-            document.fullscreenElement
-                ? "✕"
-                : "⛶";
-
-    }
-);
-
-
-/* ==================================================
-   OUTPUT BUTTON LAYOUT GENERATOR (CENTERED)
+   RENDER OUTPUT INLINE BELOW THE GRID
 ================================================== */
 
 document.getElementById("outputBtn").addEventListener("click", () => {
-
     const cityInputs = document.querySelectorAll(".city-input");
     const cities = Array.from(cityInputs).map(input => input.value.trim());
 
-    const outputWindow = window.open("", "_blank");
+    // Update text content
+    document.getElementById("out1").textContent = cities[0] || "1";
+    document.getElementById("out2").textContent = cities[1] || "2";
+    document.getElementById("out3").textContent = cities[2] || "3";
+    document.getElementById("out4").textContent = cities[3] || "4";
+    document.getElementById("out5").textContent = cities[5] ? cities[4] : (cities[4] || "5");
+    document.getElementById("out5").textContent = cities[4] || "5";
+    document.getElementById("out6").textContent = cities[5] || "6";
+    document.getElementById("out7").textContent = cities[6] || "7";
 
-    outputWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Output Layout</title>
-            <style>
-                * { box-sizing: border-box; margin: 0; padding: 0; }
-                body {
-                    background: #fff;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
-                    font-family: Arial, sans-serif;
-                }
-                .container {
-                    position: relative;
-                    width: 900px;
-                    height: 550px;
-                    border: 4px solid black;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    padding: 40px 0;
-                }
-                /* Black vertical dividing lines */
-                .line {
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    width: 4px;
-                    background: black;
-                }
-                .line-1 { left: 23%; }
-                .line-2 { left: 46%; }
-                .line-3 { left: 71%; }
+    // Show output box below grid and scroll into view
+    const wrapper = document.getElementById("outputWrapper");
+    wrapper.style.display = "block";
+    wrapper.scrollIntoView({ behavior: "smooth" });
+});
 
-                /* Horizontal blue bar containers */
-                .bar {
-                    position: relative;
-                    background: #1427ea;
-                    height: 50px;
-                    display: flex;
-                    align-items: center;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 18px;
-                    z-index: 2;
-                }
-                .bar-top { width: 71%; }
-                .bar-bottom { width: 100%; }
+/* FULLSCREEN */
+const fullscreenBtn = document.getElementById("fullscreenBtn");
 
-                /* Perfectly centered item boxes */
-                .item {
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    padding: 0 4px;
-                }
+fullscreenBtn.addEventListener("click", async () => {
+    try {
+        if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+            fullscreenBtn.textContent = "✕";
+        } else {
+            await document.exitFullscreen();
+            fullscreenBtn.textContent = "⛶";
+        }
+    } catch (error) {
+        console.log(error);
+    }
+});
 
-                /* Top row positions aligned to grid sections */
-                .pos-1 { left: 0%; width: 32.4%; }
-                .pos-2 { left: 32.4%; width: 32.4%; }
-                .pos-3 { left: 64.8%; width: 35.2%; }
-                
-                /* Bottom row positions aligned to grid sections */
-                .pos-4 { left: 0%; width: 23%; }
-                .pos-5 { left: 23%; width: 23%; }
-                .pos-6 { left: 46%; width: 25%; }
-                .pos-7 { left: 71%; width: 29%; }
-
-                .label {
-                    position: absolute;
-                    bottom: -35px;
-                    width: 100%;
-                    text-align: center;
-                    font-weight: bold;
-                    font-size: 20px;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <div class="line line-1"></div>
-                <div class="line line-2"></div>
-                <div class="line line-3"></div>
-
-                <div class="bar bar-top">
-                    <div class="item pos-1">${cities[0] || "1"}</div>
-                    <div class="item pos-2">${cities[1] || "2"}</div>
-                    <div class="item pos-3">${cities[2] || "3"}</div>
-                </div>
-
-                <div class="bar bar-bottom">
-                    <div class="item pos-4">${cities[3] || "4"}</div>
-                    <div class="item pos-5">${cities[4] || "5"}</div>
-                    <div class="item pos-6">${cities[5] || "6"}</div>
-                    <div class="item pos-7">${cities[6] || "7"}</div>
-                </div>
-
-                <div class="label">output</div>
-            </div>
-        </body>
-        </html>
-    `);
+document.addEventListener("fullscreenchange", () => {
+    fullscreenBtn.textContent = document.fullscreenElement ? "✕" : "⛶";
 });
 
 </script>
-
 
 </body>
 </html>
