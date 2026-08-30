@@ -271,7 +271,7 @@ body {
     background: #fff;
     color: #000;
     border-radius: 8px;
-    padding: 40px 20px 50px 20px;
+    padding: 40px 20px 65px 20px;
     margin-top: 10px;
     margin-bottom: 40px;
 }
@@ -337,14 +337,61 @@ body {
 .pos-6 { left: 46%; width: 25%; }
 .pos-7 { left: 71%; width: 29%; }
 
-.out-label {
+.out-footer-controls {
     position: absolute;
-    bottom: -35px;
+    bottom: -55px;
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.out-label {
     font-weight: bold;
     font-size: 20px;
     color: #000;
+}
+
+/* MODERN TOP BUTTON DESIGN */
+.scroll-top-btn {
+    background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+    color: #ffffff;
+    border: 1px solid #444444;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    outline: none;
+}
+
+.scroll-top-btn span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+    background: linear-gradient(135deg, #00d9ff 0%, #0072ff 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+.scroll-top-btn:hover span {
+    transform: translateY(-2px);
+}
+
+.scroll-top-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 217, 255, 0.3);
 }
 
 /* FOOTER & FULLSCREEN */
@@ -380,7 +427,7 @@ body {
 
 <div class="app">
 
-    <div class="header">
+    <div class="header" id="topHeader">
         <div class="title">CITY CONTROL</div>
         <div class="subtitle">7 LIVE BOXES</div>
         <button class="output-btn" id="outputBtn">OUTPUT</button>
@@ -499,7 +546,10 @@ body {
                 <div class="out-item pos-7" id="out7">7</div>
             </div>
 
-            <div class="out-label">output</div>
+            <div class="out-footer-controls">
+                <div class="out-label">output</div>
+                <button class="scroll-top-btn" id="scrollTopBtn"><span>▲</span> TOP</button>
+            </div>
         </div>
     </div>
 
@@ -621,28 +671,27 @@ cards.forEach(card => {
 
 loadCities("sorani");
 
-/* ==================================================
-   RENDER OUTPUT INLINE BELOW THE GRID
-================================================== */
-
+/* OUTPUT RENDER */
 document.getElementById("outputBtn").addEventListener("click", () => {
     const cityInputs = document.querySelectorAll(".city-input");
     const cities = Array.from(cityInputs).map(input => input.value.trim());
 
-    // Update text content
     document.getElementById("out1").textContent = cities[0] || "1";
     document.getElementById("out2").textContent = cities[1] || "2";
     document.getElementById("out3").textContent = cities[2] || "3";
     document.getElementById("out4").textContent = cities[3] || "4";
-    document.getElementById("out5").textContent = cities[5] ? cities[4] : (cities[4] || "5");
     document.getElementById("out5").textContent = cities[4] || "5";
     document.getElementById("out6").textContent = cities[5] || "6";
     document.getElementById("out7").textContent = cities[6] || "7";
 
-    // Show output box below grid and scroll into view
     const wrapper = document.getElementById("outputWrapper");
     wrapper.style.display = "block";
     wrapper.scrollIntoView({ behavior: "smooth" });
+});
+
+/* SCROLL TO TOP */
+document.getElementById("scrollTopBtn").addEventListener("click", () => {
+    document.getElementById("topHeader").scrollIntoView({ behavior: "smooth" });
 });
 
 /* FULLSCREEN */
